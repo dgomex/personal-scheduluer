@@ -17,6 +17,5 @@ pull:
 deployments:
   - name: hello-world
     entrypoint: flows/hello_world.py:hello_world_flow
-    # Change this to match a work pool that exists in your Prefect Cloud workspace.
     work_pool:
-      name: default-work-pool
+      name: serverless
