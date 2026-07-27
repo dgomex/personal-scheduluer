@@ -1,0 +1,22 @@
+# Prefect project configuration
+# Docs: https://docs.prefect.io/latest/guides/prefect-deploy/
+
+name: personal-scheduluer
+prefect-version: 3.0.0
+
+# Build and push steps are not needed for a git-based pull deployment.
+build: null
+push: null
+
+# How Prefect Cloud fetches this repo at run time.
+pull:
+  - prefect.deployments.steps.git_clone:
+      repository: https://github.com/dgomex/personal-scheduluer
+      branch: master
+
+deployments:
+  - name: hello-world
+    entrypoint: flows/hello_world.py:hello_world_flow
+    # Change this to match a work pool that exists in your Prefect Cloud workspace.
+    work_pool:
+      name: default-work-pool
